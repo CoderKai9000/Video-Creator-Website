@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Images</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+</head>
+<body>
+    <h1 style="color: aliceblue;font-family: myfont;">Here are your images:</h1><br>
+    <a href="/welcome" class="button"><span style="font-family: myfont;" >back to home</span></a>
+        {% for image in image_list%}
+        <img src="data:image/jpeg;base64,{{ image }} " alt="Image" style="width: 50%; height: auto;">
+        {% endfor %}
+</body>
+</html>

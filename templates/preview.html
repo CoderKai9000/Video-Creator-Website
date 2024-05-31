@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Video Preview</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+    <script src="{{url_for('static', filename='drag_and_drop.js')}}"></script>
+</head>
+
+<body>
+    <style>
+        #display_selected {
+            border: 2px solid rgb(4, 12, 103);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            overflow-y: scroll;
+            gap: 10px;
+        }
+
+        #display_selected img {
+            padding: 10px;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+    <div class="display_selected">
+        <!-- <img src="{{url_for('static', filename='like1.png.png')}}" style="width: 100px; height: 100px;">
+        <img src="{{url_for('static', filename='gmail.jpg')}}" style="width: 100px; height: 100px;">
+        <img src="{{url_for('static', filename='insta_logo.png')}}" style="width: 100px; height: 100px;">
+        <img src="{{url_for('static', filename='dark_mode.jpg')}}" style="width: 100px; height: 100px;">
+        <img src="{{url_for('static', filename='github.png')}}" style="width: 100px; height: 100px;"> -->
+        {% for file in files %}
+        <img src="data:image/jpg;base64,{{ file.decode('utf-8') }}" style="width: 100px; height: 100px;" />
+        {% endfor %}
+    </div>
+
+    <video width="50%" height="auto" controls id="videoPlayer">
+        <source src="{{url_for('static', filename='output_video.mp4')}}" type="video/mp4">
+    </video>
+    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+    <div><br><br><br><br></div>
+    <div><a href="/home" ><button><span style="font-family: myfont;font-size: 200%;">go back to home</span></button></a></div>
+    <div><br><br><br><br></div>
+    <div><button><span><a href="{{url_for('static', filename='output_video.mp4')}}" style="color: black; font-family: myfont;text-decoration: none; font-size: 200%;" download="vid">Download video</a></span></button></div>
+    <div><br><br><br><br></div>
+    <div><a href="/logout" ><button><span style="font-family: myfont;font-size: 200%;">logout</span></button></a></div>
+    </div>
+</body>
+</html>

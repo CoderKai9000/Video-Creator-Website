@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> CONFIRMATION PAGE </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='confirmation.css') }}">
+    </head>
+    <body>
+        <div>
+        <section>
+                <h1 class="bottom">
+                    {% if data %}
+                     Hi {{ data['username'] }}!!</br></br> Welcome to the menu page....
+                     {% endif %}
+                </h1></br></br></br>
+        </section>
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: space-evenly; align-items:end; margin-top: 40%;margin-right: 50%;">
+        <div><a href="/home" class="button" ><span style="font-family: myfont;font-size: 150%;">Generate video</span></a></div>
+        <div><a href="/UploadedImages" class="button" ><span style="font-family: myfont;font-size: 150%;">Uploaded Images</span></a></div>
+        <div><a href="/logout" class="button" ><span style="font-family: myfont;font-size: 150%;">logout</span></a></div>
+        </div>
+<!--     
+    <a href="/home" style="margin-top: 40%;margin-left: 35%;text-decoration: none;" class="button"><span>GO TO MAIN PAGE!!</span></a><br>
+    <a href="/UploadedImages" class="button" style="text-decoration: none;"><span>Check out your images!!</span></a> -->
+    </body>
+</html>
